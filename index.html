@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I'm Sorry ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #fff0f5);
+    overflow: hidden;
+}
+
+.card {
+    width: 90%;
+    max-width: 500px;
+    padding: 40px 25px;
+    text-align: center;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    animation: appear 1s ease;
+}
+
+.heart {
+    font-size: 70px;
+    animation: heartbeat 1.3s infinite;
+}
+
+h1 {
+    margin: 15px 0;
+    color: #e63969;
+    font-size: 34px;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 15px 0;
+}
+
+h2 {
+    color: #e63969;
+    margin-top: 25px;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+button {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.yes {
+    background: #e63969;
+    color: white;
+}
+
+.yes:hover {
+    transform: scale(1.1);
+}
+
+.maybe {
+    background: #ffe1eb;
+    color: #e63969;
+    z-index: 10;
+}
+
+#message {
+    display: none;
+    margin-top: 25px;
+    font-size: 20px;
+    color: #e63969;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="heart">❤️</div>
+
+    <h1>Hey, ASHA🥺</h1>
+
+    <p>
+        Okay, I know we argued. 🥺
+        But I don't like being on bad terms with you.
+    </p>
+
+    <p>
+        Can we stop fighting now? ❤️
+    </p>
+
+    <h2>Will you forgive me?</h2>
+
+    <div class="buttons">
+
+        <button class="yes" onclick="forgive()">
+            Yes ❤️
+        </button>
+
+        <button class="maybe" id="noButton">
+            No 😤
+        </button>
+
+    </div>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+
+const noButton = document.getElementById("noButton");
+
+function moveButton() {
+
+    const padding = 15;
+
+    const maxX = window.innerWidth -
+                 noButton.offsetWidth - padding;
+
+    const maxY = window.innerHeight -
+                 noButton.offsetHeight - padding;
+
+    const randomX = Math.random() * Math.max(0, maxX);
+    const randomY = Math.random() * Math.max(0, maxY);
+
+    noButton.style.position = "fixed";
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+}
+
+// Move when mouse approaches
+noButton.addEventListener("mouseenter", moveButton);
+
+// Move when touched on mobile
+noButton.addEventListener("touchstart", function(event) {
+    event.preventDefault();
+    moveButton();
+});
+
+// YES button action
+function forgive() {
+
+    document.getElementById("message").style.display = "block";
+
+    document.getElementById("message").innerHTML =
+        "Yayyyy! 🥹❤️ Truce accepted! No more fighting. Sending virtual hugs! 🤗";
+
+    noButton.style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>
